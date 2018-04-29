@@ -1,0 +1,69 @@
+<mat-toolbar color="primary">
+  <div class="col-md-4 col-md-offset-4">
+    <div class="text-center">Google-SSO Login With Angular4</div>
+  </div>
+</mat-toolbar>
+<br>
+<br>
+<br>
+<br>
+<div class="col-md-4 col-md-offset-4" *ngIf="!user">
+  <mat-card class="example-card">
+    <mat-card-content>
+      <span style="font-family: system-ui;">
+        <h3>LOGIN</h3>
+      </span>
+      <br>
+      <form class="example-form">
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Enter your username">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <!-- <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon> -->
+          </mat-form-field>
+        </div>
+        <div class="col-md-offset-4">
+          <button mat-raised-button color="primary" class="text-center">SIGN-IN</button>
+        </div>
+      </form>
+      <br>
+
+      <div>
+        <mat-card>
+          <!-- <mat-card-header> -->
+            <mat-card-title>
+                <h4>LOGIN With:</h4>
+            </mat-card-title>
+          <!-- </mat-card-header> -->
+          <mat-card-content>
+            <button mat-fab color="warn" (click)="signInWithGoogle()">
+              <span class="fa fa-google"></span>
+            </button>
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+
+
+      <!-- <button mat-fab  (click)="signInWithFB()()">
+          <span class="fa fa-facebook"></span>
+        </button> -->
+    </mat-card-content>
+  </mat-card>
+</div>
+<div class="col-md-4 col-md-offset-4" *ngIf="user">
+  <mat-card class="example-card">
+    <mat-card-content>
+      <h3>SIGNED IN as: </h3>
+      <img class="card-img-top img-responsive photo" src="{{ user.photoUrl }}">
+      <h4>{{ user.name }}</h4>
+      <p>{{ user.email }}</p>
+      <button mat-raised-button color="warn" (click)="signOut()">SIGN OUT</button>
+    </mat-card-content>
+  </mat-card>
+</div>
